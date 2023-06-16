@@ -1,7 +1,7 @@
-using DataversePluginsUnitTesting;
+using Pg.Dataverse;
 using Xunit;
 
-namespace Pg.DataversePluginsUnitTesting.Tests
+namespace Pg.Dataverse.Tests
 {
     public class UnitTest1
     {
