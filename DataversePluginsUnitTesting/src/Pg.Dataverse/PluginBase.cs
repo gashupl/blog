@@ -14,6 +14,9 @@ namespace Pg.Dataverse
     /// </summary>
     public abstract class PluginBase : IPlugin
     {
+        protected const string Target = "Target";
+        protected const string PreImage = "PreImage";
+
         protected string PluginClassName { get; }
 
         /// <summary>
