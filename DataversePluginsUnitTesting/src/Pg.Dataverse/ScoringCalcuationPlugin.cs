@@ -57,6 +57,14 @@ namespace Pg.Dataverse
                         account.pg_scoring = pg_scoring.Low; 
                     }
                 }
+                else
+                {
+                    localPluginContext.Trace("Target is not an account");
+                }
+            }
+            else
+            {
+                localPluginContext.Trace("Missing target"); 
             }
         }
     }
