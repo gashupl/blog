@@ -1,0 +1,25 @@
+﻿@page "/example1"
+
+@using Pg.SfGridCustomButtons.Client.Data
+@using Syncfusion.Blazor.Grids
+
+@inject ISectionRepository SectionRepository
+
+<h3>Example1</h3>
+
+<SfGrid DataSource="Sections">
+    <GridColumns>
+        <GridColumn Field="Id" HeaderText="ID" Width="100" TextAlign="TextAlign.Right"></GridColumn>
+        <GridColumn Field="Name" HeaderText="Name" Width="200"></GridColumn>
+        <GridColumn Field="Description" HeaderText="Description" Width="300"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    public IList<Section> Sections { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Sections = this.SectionRepository.GetAll();
+    }
+}

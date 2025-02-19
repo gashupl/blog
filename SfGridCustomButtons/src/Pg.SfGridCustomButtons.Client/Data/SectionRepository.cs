@@ -1,6 +1,6 @@
 ﻿namespace Pg.SfGridCustomButtons.Client.Data
 {
-    public class SectionRepository
+    public class SectionRepository : ISectionRepository
     {
         private List<Section> _sections; 
         public SectionRepository() 
