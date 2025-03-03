@@ -19,5 +19,24 @@
         {
             return _sections;
         }
+
+        public Section Insert(Section section)
+        {
+            var lastId = _sections.Max(x => x.Id);
+            section.Id = lastId + 1; 
+            _sections.Add(section);
+            return section; 
+        }
+
+        public void Update(Section section)
+        {
+            _sections[_sections.FindIndex(x => x.Id == section.Id)] = section;
+        }
+        public void Delete(int id)
+        {
+            var section = this._sections.Find(x => x.Id == id);
+            if (section != null)
+                this._sections.Remove(section); 
+        }
     }
 }

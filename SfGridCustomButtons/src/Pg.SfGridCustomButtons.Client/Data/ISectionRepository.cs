@@ -2,6 +2,12 @@
 {
     public interface ISectionRepository
     {
-        List<Section> GetAll(); 
+        List<Section> GetAll();
+
+        Section Insert(Section section);
+
+        void Update(Section section);
+
+        void Delete(int id);
     }
 }
