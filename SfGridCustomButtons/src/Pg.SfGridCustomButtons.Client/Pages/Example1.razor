@@ -8,7 +8,9 @@
 <h3>Example1</h3>
 
 <SfGrid @ref="Grid" DataSource="@Sections" AllowPaging="true" AllowSorting="true"
- Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+ Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update", "Refresh" })">
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="EditMode.Normal"></GridEditSettings>
+    <GridPageSettings PageSize="10"></GridPageSettings>
     <GridEvents OnActionBegin="OnBeginHandler" TValue="Section"></GridEvents>
     <GridColumns>
         <GridColumn Field="Id" HeaderText="ID" Width="100" TextAlign="TextAlign.Right" IsPrimaryKey="true" AllowAdding="false"></GridColumn>
