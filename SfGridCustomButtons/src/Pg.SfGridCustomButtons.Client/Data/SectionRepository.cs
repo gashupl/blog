@@ -17,7 +17,7 @@
 
         public List<Section> GetAll()
         {
-            return _sections;
+            return new List<Section>(_sections);
         }
 
         public Section Insert(Section section)

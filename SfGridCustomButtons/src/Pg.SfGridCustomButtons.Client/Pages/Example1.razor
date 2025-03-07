@@ -8,7 +8,7 @@
 <h3>Example1</h3>
 
 <SfGrid @ref="Grid" DataSource="@Sections" AllowPaging="true" AllowSorting="true"
- Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update", "Refresh" })">
+Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update", "DoSomething" })">
     <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="EditMode.Normal"></GridEditSettings>
     <GridPageSettings PageSize="10"></GridPageSettings>
     <GridEvents OnActionBegin="OnBeginHandler" TValue="Section"></GridEvents>
@@ -36,7 +36,9 @@
 
         if (args.Action?.ToLower() == "add")
         {
-            SectionRepository.Insert(data);
+            var section = SectionRepository.Insert(data);
+            data.Id = section.Id;
+            this.Grid.Refresh(); 
         }
         else if (args.Action?.ToLower() == "edit")
         {
@@ -46,11 +48,11 @@
         {
             SectionRepository.Delete(data.Id);
         }
-        if (args.Action?.ToLower() == "refresh")
+        if (args.Action?.ToLower() == "dosomething") //Not working in this example 
         {
-            Sections = this.SectionRepository.GetAll();
-            Grid.Refresh(); 
+            //TODO: This is the place where I would like o have my custom logic applied
         }
+
     }
 
 }
