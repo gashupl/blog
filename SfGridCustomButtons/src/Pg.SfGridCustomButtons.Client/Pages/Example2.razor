@@ -1,5 +1,68 @@
-﻿<h3>Example2</h3>
+﻿@page "/example2"
+
+@using Pg.SfGridCustomButtons.Client.Data
+@using Syncfusion.Blazor.Grids
+
+@inject ISectionRepository SectionRepository
+
+<h3>Example 2</h3>
+
+<SfGrid @ref="Grid" DataSource="@Sections" AllowPaging="true" AllowSorting="true"
+        Toolbar="@toolbarItems">
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="EditMode.Normal"></GridEditSettings>
+    <GridPageSettings PageSize="10"></GridPageSettings>
+    <GridEvents OnActionBegin="OnBeginHandler" TValue="Section" onToolbarClick="OnToolbarClickHandler"></GridEvents>
+    <GridColumns>
+        <GridColumn Field="Id" HeaderText="ID" Width="100" TextAlign="TextAlign.Right" IsPrimaryKey="true" AllowAdding="false"></GridColumn>
+        <GridColumn Field="Name" HeaderText="Name" Width="200"></GridColumn>
+        <GridColumn Field="Description" HeaderText="Description" Width="300"></GridColumn>
+    </GridColumns>
+
+</SfGrid>
 
 @code {
+    
+    private List<string> toolbarItems = new()
+    {
+        "Add", "Edit", "Delete", "Update", "Cancel", "DoSomething"
+    };
+
+    private SfGrid<Section> Grid { get; set; }
+
+    public IList<Section> Sections { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Sections = this.SectionRepository.GetAll();
+    }
+
+    private async void OnToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Text == "DoSomething")
+        {
+            //TODO: This is the place where I would like o have my custom logic applied
+        }
+    }
+
+
+    private async void OnBeginHandler(ActionEventArgs<Section> args)
+    {
+        var data = args.Data;
+
+        if (args.Action?.ToLower() == "add")
+        {
+            var section = SectionRepository.Insert(data);
+            data.Id = section.Id;
+            this.Grid.Refresh();
+        }
+        else if (args.Action?.ToLower() == "edit")
+        {
+            SectionRepository.Update(data);
+        }
+        if (args.Action?.ToLower() == "delete")
+        {
+            SectionRepository.Delete(data.Id);
+        }
+    }
 
 }
