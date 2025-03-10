@@ -23,15 +23,20 @@
 
 @code {
 
+    private const string AddButtonId = "AddButton"; 
+    private const string EditButtonId = "EditButton"; 
+    private const string UpdateButtonId = "UpdateButton";
+    private const string DeleteButtonId = "DeleteButton"; 
+    private const string CancelButtonId = "CancelButton"; 
     private const string DoSomethingButtonId = "DoSomethingButton";
 
     private List<ToolbarItem> toolbarItems = new()
     {
-        new ToolbarItem { Id = "AddButton", Text = "Add", PrefixIcon = "e-add"  },
-        new ToolbarItem { Id = "EditButton", Text = "Edit", PrefixIcon = "e-edit"  },
-        new ToolbarItem { Id = "DeleteButton", Text = "Delete", PrefixIcon = "e-delete" },
-        new ToolbarItem { Id = "UpdateButton", Text = "Update", PrefixIcon = "e-update" },
-        new ToolbarItem { Id = "CancelButton", Text = "Cancel", PrefixIcon = "e-cancel"  },
+        new ToolbarItem { Id = AddButtonId, Text = "Add", PrefixIcon = "e-add"  },
+        new ToolbarItem { Id = EditButtonId, Text = "Edit", PrefixIcon = "e-edit"  },
+        new ToolbarItem { Id = DeleteButtonId, Text = "Delete", PrefixIcon = "e-delete" },
+        new ToolbarItem { Id = UpdateButtonId, Text = "Update", PrefixIcon = "e-update" },
+        new ToolbarItem { Id = CancelButtonId, Text = "Cancel", PrefixIcon = "e-cancel"  },
         new ToolbarItem { Id = DoSomethingButtonId, Text = "DoSomething" }
     };
 
@@ -46,6 +51,26 @@
 
     private async void OnToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
     {
+        if (args.Item.Id == AddButtonId)
+        {
+            await Grid.AddRecordAsync();
+        }
+        else if (args.Item.Id == EditButtonId)
+        {
+            await Grid.StartEditAsync();
+        }
+        else if (args.Item.Id == DeleteButtonId)
+        {
+            await Grid.DeleteRecordAsync();
+        }
+        else if (args.Item.Id == UpdateButtonId)
+        {
+            await Grid.EndEditAsync();
+        }
+        else if (args.Item.Id == CancelButtonId)
+        {
+            await Grid.CloseEditAsync();
+        }
         if (args.Item.Id == DoSomethingButtonId)
         {
             //TODO: This is the place where I would like o have my custom logic applied
