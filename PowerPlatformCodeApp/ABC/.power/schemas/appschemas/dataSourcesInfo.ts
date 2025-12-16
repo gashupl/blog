@@ -11,5 +11,12 @@ export const dataSourcesInfo = {
     "primaryKey": "contactid",
     "dataSourceType": "Dataverse",
     "apis": {}
+  },
+  "payment": {
+    "tableId": "Payment",
+    "version": "v2",
+    "primaryKey": "payment_id",
+    "dataSourceType": "Connector",
+    "apis": {}
   }
 };

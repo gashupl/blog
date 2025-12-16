@@ -1,0 +1,47 @@
+{
+  "appId": "2b95ac16-942b-4422-930b-a541105c46a8",
+  "appDisplayName": "ABC",
+  "description": null,
+  "environmentId": "",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "logoPath": "Default",
+  "localAppUrl": "http://localhost:3000/",
+  "region": "prod",
+  "connectionReferences": {
+    "849f8829-45c4-4a8c-b329-be18881a3b64": {
+      "id": "/providers/Microsoft.PowerApps/apis/shared_sql",
+      "displayName": "SQL Server",
+      "dataSources": [
+        "payment"
+      ],
+      "authenticationType": "sqlAuthentication",
+      "sharedConnectionId": "",
+      "dataSets": {
+        "sql-codeappdemo.database.windows.net,db-codeappdemo": {
+          "dataSources": {
+            "payment": {
+              "tableName": "[dbo].[Payment]"
+            }
+          }
+        }
+      }
+    }
+  },
+  "databaseReferences": {
+    "default.cds": {
+      "state": "Configured",
+      "instanceUrl": "",
+      "webApiVersion": "v9.0",
+      "dataSources": {
+        "contacts": {
+          "entitySetName": "contacts",
+          "logicalName": "contact",
+          "isHidden": false
+        }
+      },
+      "version": "v9.0",
+      "environmentVariableName": ""
+    }
+  }
+}
