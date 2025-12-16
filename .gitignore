@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+PowerPlatformCodeApp/ABC/.cursor/rules/powersdkcli.mdc
+PowerPlatformCodeApp/ABC/.github/copilot-instructions.md
